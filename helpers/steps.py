@@ -1,14 +1,30 @@
-from base_dr import driver
-from page.onb import continue_btn
+from base_dr import driver, options
+from page.onb import policy_manager_header
 
 
 def uninstall():
-    driver.remove_app("tech.plink.PlinkApp")
+    driver.remove_app(app_id=app_package)
 
 
-def open_app(app_id: str):
-    driver.activate_app(app_id)
+def install():
+    driver.install_app(app_path="D:\\Python\\test_app.apk")
 
 
-def tap_continue_btn():
-    continue_btn.tap()
+def open_app():
+    driver.activate_app(
+                        app_id=app_package
+                        )
+
+
+def policy_manager_is_visible():
+    policy_manager_header.should_be_visible()
+
+
+def close_app():
+    driver.terminate_app(
+                        app_package
+                        )
+
+
+options_obj = options()
+app_package = options_obj.app_package

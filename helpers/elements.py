@@ -66,7 +66,6 @@ class Element:
 
     def should_be_visible(self, index=None, timeout=10):
         self.is_displayed(index=index, timeout=timeout)
-        return self
 
     def is_displayed(self, index=None, timeout=10):  # -> bool | dict:
         try:

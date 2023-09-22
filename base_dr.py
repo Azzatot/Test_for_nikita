@@ -1,21 +1,21 @@
 from appium import webdriver
+from appium.options.android import UiAutomator2Options
 
 
-desired_caps = {
-    "platformName": "android",
-    "fullReset": True,
-    "appWaitActivity": "com.dog_app.plink.*",
-    "appPackage": "tech.plink.PlinkApp",
-    "language": "en",
-    "locale": "US",
-    "deviceName": "ZE2232JWS9",
-    "platformVersion": "10",
-    "app": "D:\\Python\\app-release.apk"
-}
+def options():
+    cup = UiAutomator2Options()
+    cup.platform_name = "android"
+    cup.full_reset = True
+    cup.app_activity = "com.afwsamples.testdpc.PolicyManagementActivity"
+    cup.app_package = "com.afwsamples.testdpc"
+    cup.device_name = "ZE2232JWS9"
+    cup.app = "D:\\Python\\test_app.apk"
+    return cup.capabilities
+
 
 url = "http://localhost:4723/wd/hub"
 
 driver = webdriver.Remote(
                         url,
-                        desired_caps
+                        options()
                         )

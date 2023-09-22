@@ -1,12 +1,14 @@
-from helpers.steps import open_app, tap_continue_btn
-from page.onb import continue_btn
+from helpers.steps import uninstall, install, policy_manager_is_visible, open_app, close_app
 
 
-def test_app_opened():
-    open_app("tech.plink.PlinkApp")
+def test_app_reinstall():
+    uninstall()
+    install()
+    open_app()
+    policy_manager_is_visible()
 
 
-def test_pass_preview():
-    continue_btn.should_be_visible()
-    [tap_continue_btn() for _ in range(4)]
-
+def test_app_closed():
+    close_app()
+    open_app()
+    policy_manager_is_visible()

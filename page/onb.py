@@ -1,3 +1,3 @@
 from helpers.elements import element, Element
 
-continue_btn: Element = element(android="id=tech.plink.PlinkApp:id/buttonContinue")
+policy_manager_header: Element = element(android="textview=Policy management")
