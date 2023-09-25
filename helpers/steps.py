@@ -4,7 +4,7 @@ from page.base_screen import policy_manager_header
 
 
 def uninstall(app_options):
-    bundle_id = app_options.app_package
+    bundle_id = app_options.bundle_id
     driver.remove_app(app_id=bundle_id)
 
 
@@ -13,7 +13,7 @@ def install():
 
 
 def open_app(app_options):
-    bundle_id = app_options.app_package
+    bundle_id = app_options.bundle_id
     driver.activate_app(
                         app_id=bundle_id
                         )
@@ -24,7 +24,7 @@ def policy_manager_is_visible():
 
 
 def close_app(app_options):
-    bundle_id = app_options.app_package
+    bundle_id = app_options.bundle_id
     driver.terminate_app(
                         bundle_id
                         )
