@@ -1,30 +1,30 @@
-from base_dr import driver, options
-from page.onb import policy_manager_header
+from base_driver import driver
+from helpers.elements import should_be_visible
+from page.base_screen import policy_manager_header
 
 
-def uninstall():
-    driver.remove_app(app_id=app_package)
+def uninstall(app_options):
+    bundle_id = app_options.app_package
+    driver.remove_app(app_id=bundle_id)
 
 
 def install():
     driver.install_app(app_path="D:\\Python\\test_app.apk")
 
 
-def open_app():
+def open_app(app_options):
+    bundle_id = app_options.app_package
     driver.activate_app(
-                        app_id=app_package
+                        app_id=bundle_id
                         )
 
 
 def policy_manager_is_visible():
-    policy_manager_header.should_be_visible()
+    should_be_visible(policy_manager_header)
 
 
-def close_app():
+def close_app(app_options):
+    bundle_id = app_options.app_package
     driver.terminate_app(
-                        app_package
+                        bundle_id
                         )
-
-
-options_obj = options()
-app_package = options_obj.app_package
