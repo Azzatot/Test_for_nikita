@@ -1,3 +1,4 @@
+import pytest
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 
@@ -15,7 +16,12 @@ def options():
 
 url = "http://localhost:4723/wd/hub"
 
-driver = webdriver.Remote(
-                        url,
-                        options()
-                        )
+
+@pytest.fixture(autouse=True)
+def driver_mobile():
+    driver = webdriver.Remote(
+                            url,
+                            options()
+                            )
+    yield driver
+    driver.quit()

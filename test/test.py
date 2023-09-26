@@ -1,5 +1,5 @@
 from helpers import steps
-from base_driver import options
+from conftest import options
 
 
 def test_app_reinstall():
