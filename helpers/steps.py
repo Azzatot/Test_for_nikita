@@ -1,6 +1,5 @@
 import os
 
-from conftest import driver_mobile
 from helpers.elements import should_be_visible
 from page.base_screen import policy_manager_header_element
 
@@ -19,8 +18,8 @@ def open_app(driver):
 
 
 def policy_manager_is_visible(driver):
-    should_be_visible(policy_manager_header_element(driver))
+    should_be_visible(policy_manager_header_element(driver), driver)
 
 
-def close_app(driver_mobile=driver_mobile):
-    driver_mobile.driver.terminate_app(bundle_id)
+def close_app(driver):
+    driver.terminate_app(driver.bundle_id)

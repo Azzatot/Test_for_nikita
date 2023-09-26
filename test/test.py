@@ -1,14 +1,11 @@
-import pytest
-
 from helpers import steps
 
 
-@pytest.mark.usefixtures('driver_mobile')
-def test_app_reinstall(driver):
-    steps.uninstall(driver)
-    steps.install(driver)
-    steps.open_app(driver)
-    steps.policy_manager_is_visible(driver)
+def test_app_reinstall(driver_mobile):
+    steps.uninstall(driver_mobile)
+    steps.install(driver_mobile)
+    steps.open_app(driver_mobile)
+    steps.policy_manager_is_visible(driver_mobile)
 
 
 def test_app_closed(driver_mobile):
