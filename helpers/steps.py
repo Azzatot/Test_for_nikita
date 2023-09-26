@@ -1,26 +1,26 @@
+import os
+
 from conftest import driver_mobile
 from helpers.elements import should_be_visible
 from page.base_screen import policy_manager_header_element
 
 
-def uninstall(app_options, driver_mobile=driver_mobile):
-    bundle_id = app_options.bundle_id
-    driver_mobile.driver.remove_app(app_id=bundle_id)
+def uninstall(driver):
+    driver.remove_app(driver.bundle_id)
 
 
-def install(driver_mobile=driver_mobile):
-    driver_mobile.driver.install_app(app_path="D:\\Python\\test_app.apk")
+def install(driver):
+    app_path = os.path.join(os.getcwd(), "test_app.apk")
+    driver.install_app(app_path=app_path)
 
 
-def open_app(app_options, driver_mobile=driver_mobile):
-    bundle_id = app_options.bundle_id
-    driver_mobile.driver.activate_app(app_id=bundle_id)
+def open_app(driver):
+    driver.activate_app(driver.bundle_id)
 
 
-def policy_manager_is_visible():
-    should_be_visible(policy_manager_header_element())
+def policy_manager_is_visible(driver):
+    should_be_visible(policy_manager_header_element(driver))
 
 
-def close_app(app_options, driver_mobile=driver_mobile):
-    bundle_id = app_options.bundle_id
+def close_app(driver_mobile=driver_mobile):
     driver_mobile.driver.terminate_app(bundle_id)

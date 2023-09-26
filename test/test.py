@@ -1,15 +1,17 @@
+import pytest
+
 from helpers import steps
-from conftest import options
 
 
-def test_app_reinstall():
-    steps.uninstall(options)
-    steps.install()
-    steps.open_app(options)
-    steps.policy_manager_is_visible()
+@pytest.mark.usefixtures('driver_mobile')
+def test_app_reinstall(driver):
+    steps.uninstall(driver)
+    steps.install(driver)
+    steps.open_app(driver)
+    steps.policy_manager_is_visible(driver)
 
 
-def test_app_closed():
-    steps.close_app(options)
-    steps.open_app(options)
-    steps.policy_manager_is_visible()
+def test_app_closed(driver_mobile):
+    steps.close_app(driver_mobile)
+    steps.open_app(driver_mobile)
+    steps.policy_manager_is_visible(driver_mobile)
